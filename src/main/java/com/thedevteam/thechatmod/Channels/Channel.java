@@ -1,6 +1,7 @@
 package com.thedevteam.thechatmod.Channels;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.spout.api.player.Player;
 import org.spout.api.util.config.ConfigurationNode;
@@ -34,5 +35,16 @@ public class Channel implements ChatDestination {
 			}
 		}
 	}
-
+	
+	public void addListener(Player p){
+		listeners.add(p);
+	}
+	
+	public void removeListener(Player p){
+		listeners.remove(p);
+	}
+	
+	public List<Player> getListeners(){
+		return listeners;
+	}
 }
