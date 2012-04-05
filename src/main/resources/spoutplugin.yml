@@ -1,0 +1,10 @@
+name: THEChatMod
+version: dev-SNAPSHOT
+description: The Chat Mod
+author: THEDevTeam
+
+main: com.thedevteam.thechatmod.TheChatMod
+protocol: Minecraft 1.2.4
+load: startup
+
+platform: BOTH
