@@ -1,24 +1,30 @@
 package com.thedevteam.thechatmod;
 
+import java.util.logging.Level;
+
 import org.spout.api.plugin.CommonPlugin;
+
+import com.thedevteam.thechatmod.listeners.ChatListener;
 
 /**
  * 
  *
  */
-public class TheChatMod extends CommonPlugin 
-{
+public class TheChatMod extends CommonPlugin {
 
 	@Override
 	public void onDisable() {
-		throw new UnsupportedOperationException("Not done yet!");
-		
+
 	}
 
 	@Override
 	public void onEnable() {
-		throw new UnsupportedOperationException("Not done yet!");
-		
+		log(Level.INFO, "THEChatMod has been enabled");
+		getGame().getEventManager().registerEvents(new ChatListener(this), this);
+	}
+
+	public void log(Level warning, String string) {
+		getLogger().log(warning, string);
 	}
 
 }
