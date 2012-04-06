@@ -13,7 +13,7 @@ import com.thedevteam.thechatmod.Channels.ChannelManager;
  * 
  *
  */
-public class TheChatMod extends CommonPlugin {
+public class THEChatMod extends CommonPlugin {
 
 	private ChannelManager cm;
 	private YamlConfiguration config;

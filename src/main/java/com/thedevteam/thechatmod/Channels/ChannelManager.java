@@ -12,16 +12,16 @@ import org.spout.api.event.player.PlayerLeaveEvent;
 import org.spout.api.player.Player;
 import org.spout.api.util.config.ConfigurationNode;
 
-import com.thedevteam.thechatmod.TheChatMod;
+import com.thedevteam.thechatmod.THEChatMod;
 
 public class ChannelManager implements Listener {
 
-	private TheChatMod plugin;
+	private THEChatMod plugin;
 	private ArrayList<Channel> channels;
 	private HashMap<Player, Player> convos = new HashMap<Player, Player>();
 	private HashMap<Player, Channel> active = new HashMap<Player, Channel>();
 
-	public ChannelManager(TheChatMod theChatMod) {
+	public ChannelManager(THEChatMod theChatMod) {
 		this.channels = new ArrayList<Channel>();
 		this.plugin = theChatMod;
 		loadChannels();
