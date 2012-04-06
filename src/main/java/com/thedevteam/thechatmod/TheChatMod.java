@@ -24,10 +24,10 @@ public class TheChatMod extends CommonPlugin {
 
 	@Override
 	public void onEnable() {
-		log(Level.INFO, "THEChatMod has been enabled");
 		this.cm = new ChannelManager(this);
 		this.config = new YamlConfiguration(new File(this.getDataFolder(),"config.yml"));
 		getGame().getEventManager().registerEvents(cm, this);
+		log(Level.INFO, "THEChatMod has been enabled");
 	}
 
 	public void log(Level warning, String string) {
