@@ -15,12 +15,13 @@ public class Channel implements ChatDestination {
 
 	public Channel(String n, ConfigurationNode node) {
 		this.name = n;
-		this.local = node.getNode("local.enabled").getBoolean();
+		this.local = node.getChild("local.enabled").getBoolean();
 		if (local == true){
-			this.distance = node.getNode("local.distance").getInt();
+			this.distance = node.getChild("local.distance").getInt();
 		}else{
 			this.distance = -1;
 		}
+		listeners = new ArrayList<Player>();
 	}
 	
 	@Override

@@ -9,6 +9,7 @@ import org.spout.api.command.CommandRegistrationsFactory;
 import org.spout.api.command.annotated.AnnotatedCommandRegistrationFactory;
 import org.spout.api.command.annotated.SimpleAnnotatedCommandExecutorFactory;
 import org.spout.api.command.annotated.SimpleInjector;
+import org.spout.api.exception.ConfigurationException;
 import org.spout.api.plugin.CommonPlugin;
 import org.spout.api.util.config.yaml.YamlConfiguration;
 
@@ -27,7 +28,11 @@ public class THEChatMod extends CommonPlugin {
 
 	@Override
 	public void onDisable() {
-
+		try {
+			config.save();
+		} catch (ConfigurationException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -52,6 +57,11 @@ public class THEChatMod extends CommonPlugin {
 			}
 		}
 		this.config = new YamlConfiguration(config);
+		try {
+			this.config.load();
+		} catch (ConfigurationException e) {
+			e.printStackTrace();
+		}
 
 		getGame().getEventManager().registerEvents(cm, this);
 		log(Level.INFO, "THEChatMod has been enabled");
