@@ -9,17 +9,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     
-<!--         <repositories> -->
-<!--         <repository> -->
-<!--             <id>spout</id> -->
-<!--             <name>spout</name> -->
-<!--             <url>http://nexus.spout.org/content/groups/public/</url> -->
-<!--         </repository> -->
-<!--         <repository> -->
-<!--         <id>spout-plugins</id> -->
-<!--             <url>http://repo.spout.org</url> -->
-<!--         </repository> -->
-<!--     </repositories> -->
+        <repositories>
+        <repository>
+            <id>spout</id>
+            <name>spout</name>
+            <url>http://nexus.spout.org/content/groups/public/</url>
+        </repository>
+    </repositories>
     <pluginRepositories>
         <pluginRepository>
             <id>spout-plugins</id>
