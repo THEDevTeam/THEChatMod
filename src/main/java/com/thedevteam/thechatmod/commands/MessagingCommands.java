@@ -20,7 +20,7 @@ public class MessagingCommands {
 	@Command(aliases = { "tell","msg" }, usage = "<player> <msg>" ,desc = "Message a player",min = 1)
 	@CommandPermissions("thechatmod.msg")
 	public void msg(CommandContext args, CommandSource source){
-		Player recever = Spout.getGame().getPlayer(args.getString(0), true);
+		Player recever = Spout.getEngine().getPlayer(args.getString(0), true);
 		if (args.length() == 1){
 			if (!(source instanceof Player)){
 				source.sendMessage("You are not allowed to start a conversation with "+ recever.getDisplayName());

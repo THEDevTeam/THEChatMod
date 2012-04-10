@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.spout.api.util.config.ConfigurationHolder;
-import org.spout.api.util.config.ConfigurationNode;
 
 import com.thedevteam.thechatmod.Channels.Channel;
 
