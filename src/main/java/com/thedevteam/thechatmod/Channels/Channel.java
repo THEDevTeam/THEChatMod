@@ -10,7 +10,7 @@ public class Channel implements ChatDestination {
 
 	private String name;
 	private boolean local;
-	private int distance;
+	private int distance = 0;
 	private ArrayList<Player> listeners;
 
 	public Channel(String n, ConfigurationNode node) {
@@ -47,4 +47,18 @@ public class Channel implements ChatDestination {
 	public List<Player> getListeners(){
 		return listeners;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public boolean isLocal() {
+		return local;
+	}
+
+
+	public int getDistance() {
+		return distance;
+	}
+
 }
