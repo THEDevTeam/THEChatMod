@@ -1,10 +1,13 @@
-package com.thedevteam.thechatmod.Channels;
+package com.thedevteam.thechatmod.channels;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.spout.api.Spout;
 import org.spout.api.player.Player;
 import org.spout.api.util.config.ConfigurationNode;
+
+import com.thedevteam.thechatmod.Message;
 
 public class Channel implements ChatDestination {
 
@@ -25,14 +28,15 @@ public class Channel implements ChatDestination {
 	}
 	
 	@Override
-	public void broadcast(Player sender,String msg){
+	public void broadcast(Message msg){
 		for (Player p: listeners){
 			if (local){
+				Player sender = Spout.getEngine().getPlayer(msg.getField("sender"), false);
 				if (p.getEntity().getPosition().getDistance(sender.getEntity().getPosition()) <= distance){
-					p.sendMessage(msg);
+					p.sendMessage(msg.format(this));
 				}
 			}else{
-			p.sendMessage(msg);
+			p.sendMessage(msg.format(this));
 			}
 		}
 	}

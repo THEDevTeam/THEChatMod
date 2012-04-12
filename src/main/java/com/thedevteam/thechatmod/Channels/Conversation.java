@@ -1,6 +1,8 @@
-package com.thedevteam.thechatmod.Channels;
+package com.thedevteam.thechatmod.channels;
 
 import org.spout.api.player.Player;
+
+import com.thedevteam.thechatmod.Message;
 
 public class Conversation implements ChatDestination{
 	
@@ -11,8 +13,8 @@ public class Conversation implements ChatDestination{
 	}
 
 	@Override
-	public void broadcast(Player player, String msg) {
-		dest.sendMessage(msg);
+	public void broadcast(Message msg) {
+		dest.sendMessage(msg.format(this));
 		
 	}
 

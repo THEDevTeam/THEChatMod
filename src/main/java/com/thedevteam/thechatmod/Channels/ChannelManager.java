@@ -1,4 +1,4 @@
-package com.thedevteam.thechatmod.Channels;
+package com.thedevteam.thechatmod.channels;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,6 +12,7 @@ import org.spout.api.event.player.PlayerLeaveEvent;
 import org.spout.api.player.Player;
 import org.spout.api.util.config.ConfigurationNode;
 
+import com.thedevteam.thechatmod.Message;
 import com.thedevteam.thechatmod.THEChatMod;
 
 public class ChannelManager implements Listener {
@@ -40,7 +41,8 @@ public class ChannelManager implements Listener {
 
 	@EventHandler(order = Order.EARLY)
 	void onPlayerChat(PlayerChatEvent e) {
-		getActive(e.getPlayer()).broadcast(e.getPlayer(), e.getMessage());
+		Message msg = new Message(e);
+		getActive(e.getPlayer()).broadcast(msg);
 		e.setCancelled(true);
 	}
 

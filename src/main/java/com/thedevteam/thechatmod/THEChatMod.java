@@ -13,7 +13,7 @@ import org.spout.api.exception.ConfigurationException;
 import org.spout.api.plugin.CommonPlugin;
 import org.spout.api.util.config.yaml.YamlConfiguration;
 
-import com.thedevteam.thechatmod.Channels.ChannelManager;
+import com.thedevteam.thechatmod.channels.ChannelManager;
 import com.thedevteam.thechatmod.commands.ChannelCommands;
 import com.thedevteam.thechatmod.commands.MessagingCommands;
 
