@@ -1,9 +1,9 @@
 name: THEChatMod
-version: dev-SNAPSHOT
+version: 0.0.1
 description: The Chat Mod
 author: THEDevTeam
 
-main: com.thedevteam.thechatmod.TheChatMod
+main: com.thedevteam.thechatmod.THEChatMod
 protocol: Minecraft 1.2.4
 load: startup
 

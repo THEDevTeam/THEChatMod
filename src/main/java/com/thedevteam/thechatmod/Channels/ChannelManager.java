@@ -3,11 +3,13 @@ package com.thedevteam.thechatmod.channels;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.spout.api.event.EventHandler;
 import org.spout.api.event.Listener;
 import org.spout.api.event.Order;
 import org.spout.api.event.player.PlayerChatEvent;
+import org.spout.api.event.player.PlayerJoinEvent;
 import org.spout.api.event.player.PlayerLeaveEvent;
 import org.spout.api.player.Player;
 import org.spout.api.util.config.ConfigurationNode;
@@ -29,6 +31,11 @@ public class ChannelManager implements Listener {
 	}
 
 	private void loadChannels() {
+		
+		Set<String> names = plugin.getConfig().getNode("channels").getKeys(false);
+		for (String name :names){
+			channels.add(new Channel(name, plugin.getConfig().getNode("channels."+name)));
+		}
 		if (plugin.getConfig() != null
 				&& plugin.getConfig().getNode("channels") != null
 				&& plugin.getConfig().getNode("channels").getChildren() != null)
@@ -37,6 +44,16 @@ public class ChannelManager implements Listener {
 				channels.add(new Channel(ch.getKey(), ch.getValue()));
 			}
 
+	}
+	
+	@EventHandler(order = Order.MONITOR)
+	void onJoin(PlayerJoinEvent e){
+		for (Channel chan : channels){
+			if (chan.getName() == plugin.getConfig().getNode("default").getString()){
+				active.put(e.getPlayer(), chan);
+			}
+		}
+			    
 	}
 
 	@EventHandler(order = Order.EARLY)

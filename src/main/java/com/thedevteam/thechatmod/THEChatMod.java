@@ -37,17 +37,7 @@ public class THEChatMod extends CommonPlugin {
 
 	@Override
 	public void onEnable() {
-		this.cm = new ChannelManager(this);
 		
-		//All of the commands!
-		CommandRegistrationsFactory<Class<?>> commandRegFactory = new AnnotatedCommandRegistrationFactory(new SimpleInjector(this), new SimpleAnnotatedCommandExecutorFactory());
-		getGame().getRootCommand().addSubCommands(this, ChannelCommands.class, commandRegFactory);
-		getGame().getRootCommand().addSubCommands(this, MessagingCommands.class, commandRegFactory);
-
-		if (!this.getDataFolder().exists()) {
-			this.getDataFolder().mkdir();
-		}
-
 		File config = new File(this.getDataFolder(), "config.yml");
 		if (!config.exists()) {
 			try {
@@ -62,6 +52,24 @@ public class THEChatMod extends CommonPlugin {
 		} catch (ConfigurationException e) {
 			e.printStackTrace();
 		}
+		this.config.setPathSeparator(".");
+		
+		this.config.getNode("channels.global.local").setValue(false);
+		this.config.getNode("default").setValue("global");
+		
+		
+		this.cm = new ChannelManager(this);
+		
+		//All of the commands!
+		CommandRegistrationsFactory<Class<?>> commandRegFactory = new AnnotatedCommandRegistrationFactory(new SimpleInjector(this), new SimpleAnnotatedCommandExecutorFactory());
+		getGame().getRootCommand().addSubCommands(this, ChannelCommands.class, commandRegFactory);
+		getGame().getRootCommand().addSubCommands(this, MessagingCommands.class, commandRegFactory);
+
+		if (!this.getDataFolder().exists()) {
+			this.getDataFolder().mkdir();
+		}
+
+		
 
 		getGame().getEventManager().registerEvents(cm, this);
 		log(Level.INFO, "THEChatMod has been enabled");
