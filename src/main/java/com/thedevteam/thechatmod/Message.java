@@ -40,7 +40,7 @@ public class Message {
 
 	public String format(ChatDestination c) {
 		if (c instanceof Conversation){
-			return "Player " + getField("sender") + " Sent the message: " + getField("message");
+			return "From " + getField("sender") + " : " + getField("message");
 		}else if(c instanceof Channel){
 			return getField("prefix") + getField("sender") + getField("suffix") + ": " + getField("message");
 		}else{

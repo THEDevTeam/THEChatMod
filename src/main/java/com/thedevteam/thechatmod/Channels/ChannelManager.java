@@ -36,13 +36,6 @@ public class ChannelManager implements Listener {
 		for (String name :names){
 			channels.add(new Channel(name, plugin.getConfig().getNode("channels."+name)));
 		}
-		if (plugin.getConfig() != null
-				&& plugin.getConfig().getNode("channels") != null
-				&& plugin.getConfig().getNode("channels").getChildren() != null)
-			for (Entry<String, ConfigurationNode> ch : plugin.getConfig()
-					.getNode("channels").getChildren().entrySet()) {
-				channels.add(new Channel(ch.getKey(), ch.getValue()));
-			}
 
 	}
 	

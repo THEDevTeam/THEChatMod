@@ -17,16 +17,16 @@ public class Channel implements ChatDestination {
 	private ArrayList<Player> listeners;
 
 	public Channel(String n, ConfigurationNode node) {
-		this.name = n;
-		this.local = node.getChild("local.enabled").getBoolean();
+		this.name = n;		
+		this.local = node.getNode("local.enabled").getBoolean();
 		if (local == true){
-			this.distance = node.getChild("local.distance").getInt();
+			this.distance = node.getNode("local.distance").getInt();
 		}else{
 			this.distance = -1;
 		}
 		listeners = new ArrayList<Player>();
+		System.out.println("Channel "+ n + " Loaded");
 	}
-	
 	@Override
 	public void broadcast(Message msg){
 		for (Player p: listeners){
