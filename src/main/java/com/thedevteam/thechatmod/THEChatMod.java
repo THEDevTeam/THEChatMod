@@ -41,21 +41,24 @@ public class THEChatMod extends CommonPlugin {
 		File config = new File(this.getDataFolder(), "config.yml");
 		if (!config.exists()) {
 			try {
+				config.getParentFile().mkdirs();
 				config.createNewFile();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 		this.config = new YamlConfiguration(config);
+		this.config.setPathSeparator(".");
+		
+		this.config.getNode("channels.global.local.enabled").setValue(false);
+		this.config.getNode("default").setValue("global");
+		
 		try {
-			this.config.load();
+			//this.config.load();
+			this.config.save();
 		} catch (ConfigurationException e) {
 			e.printStackTrace();
 		}
-		this.config.setPathSeparator(".");
-		
-		this.config.getNode("channels.global.local").setValue(false);
-		this.config.getNode("default").setValue("global");
 		
 		
 		this.cm = new ChannelManager(this);

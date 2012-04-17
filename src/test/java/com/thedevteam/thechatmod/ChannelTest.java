@@ -6,8 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.spout.api.exception.ConfigurationException;
 import org.spout.api.player.Player;
-import org.spout.api.util.config.Configuration;
-import org.spout.api.util.config.ConfigurationHolder;
 import org.spout.api.util.config.ConfigurationNode;
 import org.spout.api.util.config.MapConfiguration;
 
@@ -30,30 +28,24 @@ public class ChannelTest {
 		config.getNode("channels","localtest","local","distance").setValue(100);
 		config.getNode("channels","local","local","enabled").setValue(false);
 		config.getNode("channels","local","local","distance").setValue(100);
-		try {
-			config.load();
-			config.save();
-		} catch (ConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+
 	}
 	
 
+	
 	@Test
 	public void newChannelTest(){
 		test = new Channel("test", config.getNode("channels.test"));
-		
 		assertTrue(test.getName() == "test");
 		assertFalse(test.isLocal());
 		assertEquals(test.getDistance(),-1);
+		
+		
 	}
 	@Test
 	public void newLocalChannelTest(){
 		
 		localtest = new Channel("localtest", config.getNode("channels.localtest"));
-		System.out.println(localtest.getName()+":"+localtest.isLocal()+":"+localtest.getDistance());
 		assertTrue(localtest.getName() == "localtest");
 		assertTrue(localtest.isLocal());
 		assertEquals(localtest.getDistance(),100);
@@ -62,7 +54,7 @@ public class ChannelTest {
 	@Test
 	public void listenersTest(){
 		
-		test = new Channel("test", config.getNode("channels.test"));
+		test = new Channel("test", config.getChild("channels.test"));
 		Player p = new SpoutPlayer("testplayer");
 		
 		test.addListener(p);

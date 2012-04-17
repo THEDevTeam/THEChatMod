@@ -11,8 +11,8 @@ import org.spout.api.event.Order;
 import org.spout.api.event.player.PlayerChatEvent;
 import org.spout.api.event.player.PlayerJoinEvent;
 import org.spout.api.event.player.PlayerLeaveEvent;
+import org.spout.api.event.player.PlayerLoginEvent;
 import org.spout.api.player.Player;
-import org.spout.api.util.config.ConfigurationNode;
 
 import com.thedevteam.thechatmod.Message;
 import com.thedevteam.thechatmod.THEChatMod;
@@ -40,10 +40,11 @@ public class ChannelManager implements Listener {
 	}
 	
 	@EventHandler(order = Order.MONITOR)
-	void onJoin(PlayerJoinEvent e){
+	void onJoin(PlayerLoginEvent e){
 		for (Channel chan : channels){
 			if (chan.getName() == plugin.getConfig().getNode("default").getString()){
 				active.put(e.getPlayer(), chan);
+				System.out.println("Player " + e.getPlayer().getName() +"'s active channel set to" + chan.getName());
 			}
 		}
 			    
